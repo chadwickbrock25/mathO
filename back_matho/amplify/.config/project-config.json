@@ -1,0 +1,17 @@
+{
+    "projectName": "backmatho",
+    "version": "3.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "back_matho",
+            "DistributionDir": "build",
+            "BuildCommand": "npm i",
+            "StartCommand": "nodemon server.js"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}
