@@ -5,7 +5,7 @@ import GTimer from './Components/GTimer'
 const baseURL = "http://localhost:3003";
 
 
-class App extends Component {
+class App extends React.PureComponent {
   state = {
     question: '',
     answer: false,
