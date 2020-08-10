@@ -1,9 +1,11 @@
 import React, { Component} from 'react';
 import './App.css';
+import QTimer from './Components/QTimer';
+import GTimer from './Components/GTimer'
 const baseURL = "http://localhost:3003";
 
 
-export default class App extends Component {
+class App extends Component {
   state = {
     question: '',
     answer: false,
@@ -23,16 +25,22 @@ export default class App extends Component {
     userid:"",
     baseURL: baseURL,
     
+    
   }
   play() {
 
   }
-
+ 
   render() {
+    
   return (
     <div className="App">
-      <h1>First steps</h1>
+      <h1>First steps </h1>
+      <QTimer/>
+      <GTimer/>
     </div>
   );
 }
+  
 }
+export default App;
