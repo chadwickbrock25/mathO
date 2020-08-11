@@ -2,12 +2,13 @@ import React, { Component} from 'react';
 import './App.css';
 import QTimer from './Components/QTimer';
 import GTimer from './Components/GTimer'
+import TestQ from './Questions'
+import AnswerBox from './Components/AnswerBox'
 const baseURL = "http://localhost:3003";
 
 
 class App extends React.PureComponent {
   state = {
-    question: '',
     answer: false,
     unanswered:[],
     reviewQ: [],
@@ -24,20 +25,40 @@ class App extends React.PureComponent {
     token:"",
     userid:"",
     baseURL: baseURL,
+    question: [],
+    TestQ: TestQ,
     
     
   }
   play() {
-
+    // this.state.question.map(({question, answer}) => (<h4>{question}</h4>))
   }
- 
+  getQuestion = () => {
+    TestQ().then(question => {
+      this.setState({
+        question: question
+      })
+    })
+  }
+  componentDidMount() {
+    this.getQuestion()
+  }
+
+
   render() {
-    
+    this.play()
   return (
     <div className="App">
-      <h1>First steps </h1>
+      <h1>First steps</h1>
+      {this.play()}
       <QTimer/>
       <GTimer/>
+      {this.state.question.map(({question, answer}) => (<div><h4>{question}</h4> <AnswerBox
+      question={this.state.question}/><h5>{answer}</h5></div>))}
+      
+      
+    
+      
     </div>
   );
 }
