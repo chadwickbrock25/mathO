@@ -14,15 +14,6 @@ class App extends React.PureComponent {
     reviewQ: [],
     correct: [],
     score: 0,
-    signUp:false,
-    login:false,
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    loginEmail: "",
-    loginPassword: "",
-    token:"",
     userid:"",
     baseURL: baseURL,
     question: [],
@@ -30,31 +21,49 @@ class App extends React.PureComponent {
     
     
   }
+  componentDidMount() {
+    this.getQuestion()
+  }
   play() {
-    // this.state.question.map(({question, answer}) => (<h4>{question}</h4>))
+    
+    let answers= this.state.question.map(({question, answer}) => {
+      
+    })
+    
   }
   getQuestion = () => {
     TestQ().then(question => {
       this.setState({
-        question: question
+        TestQ: TestQ,
+        problem: question[0].question,
+        answer: question[0].answer,
+        Qid: question[0].Qid
+
       })
     })
   }
-  componentDidMount() {
-    this.getQuestion()
-  }
+  
 
 
   render() {
-    this.play()
+   
   return (
     <div className="App">
       <h1>First steps</h1>
-      {this.play()}
+      
+      {'QID '+ this.state.Qid}<br/>
       <QTimer/>
       <GTimer/>
-      {this.state.question.map(({question, answer}) => (<div><h4>{question}</h4> <AnswerBox
-      question={this.state.question}/><h5>{answer}</h5></div>))}
+      {this.state.problem}<br/>
+     
+      <AnswerBox
+      problem={this.state.problem}
+      answer={this.state.answer}
+      Qid={this.state.Qid}
+      question={this.getQuestion}/>
+
+      {this.state.answer}
+      
       
       
     
