@@ -1,4 +1,5 @@
 import React from 'react'
+import QTimer from './QTimer'
 
 class AnswerBox extends React.PureComponent{
     constructor(props) {
@@ -17,6 +18,7 @@ class AnswerBox extends React.PureComponent{
     
     handleSubmit(event) {
         event.preventDefault();
+       
         if(this.state.value === this.props.answer) {
             this.state.answered.push(this.props.Qid)
             console.log(this.state.answered)
@@ -26,10 +28,14 @@ class AnswerBox extends React.PureComponent{
         this.props.question()
         this.state.value = ''
         
+        
     }
    
     render() {
-        
+        // console.log(QTimer)
+        // if(QTimer === 0) {
+        //     console.log('PUSH')
+        // }
     return (
         <div className="answerBox">
             <div className="questionAB">
@@ -38,6 +44,13 @@ class AnswerBox extends React.PureComponent{
                     <input type="submit" value="Submit" />
                 </form>
             </div>
+            <QTimer
+            question={this.props.question}
+            submit={this.handleSubmit}
+            // problem={this.props.problem}
+            // answer={this.props.answer}
+            Qid={this.props.Qid}
+            />
         </div>
     )}
 }

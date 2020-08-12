@@ -52,10 +52,9 @@ class App extends React.PureComponent {
       <h1>First steps</h1>
       
       {'QID '+ this.state.Qid}<br/>
-      <QTimer/>
       <GTimer/>
       {this.state.problem}<br/>
-     
+      
       <AnswerBox
       problem={this.state.problem}
       answer={this.state.answer}

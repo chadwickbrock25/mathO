@@ -21,6 +21,10 @@ class GTimer extends React.PureComponent{
     }
     render() {
     let count= this.state.count
+    if(count === 0) {
+      console.log('GAME OVER')
+      
+  }
       return (
         <div><h2>Game overall {count}</h2></div>
       );
