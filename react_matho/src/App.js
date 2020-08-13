@@ -18,13 +18,13 @@ class App extends React.Component {
       redirect: !this.state.redirect
     })
   }
-  componentDidUpdate() {
-    if (this.state.redirect) {
-      this.setState({
-        redirect: false
-      })
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.redirect) {
+  //     this.setState({
+  //       redirect: false
+  //     })
+  //   }
+  // }
   play() {
   
     
