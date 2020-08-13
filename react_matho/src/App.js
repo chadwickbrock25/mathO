@@ -1,36 +1,26 @@
-import React, { Component} from 'react';
+import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Launch from './Components/Launch'
 import Results from './Components/Results';
 import QTimer from './Components/QTimer';
-const baseURL = "http://localhost:3003";
+
 
 
 class App extends React.Component {
   state = {
     redirect: false,
-    answeredA: [],
-    missedA: [],
+    answeredA: ["1 + 7", "1 + 6", "1 + 2", "1 + 2", "1 + 6"],
+    missedA: ["1 + 2", "1 + 6", "1 + 2"],
   }
   handleRedirect = () => {
     this.setState({
       redirect: !this.state.redirect
     })
   }
-  // componentDidUpdate() {
-  //   if (this.state.redirect) {
-  //     this.setState({
-  //       redirect: false
-  //     })
-  //   }
-  // }
-  play() {
   
-    
-  }
   render() {
-  
+    console.log(this.state.answeredA.indexOf())
   return (
    
     <div className="App">
@@ -39,7 +29,9 @@ class App extends React.Component {
         <Route exact path='/game' render={() => <QTimer
         missedA={this.state.missedA} answeredA={this.state.answeredA}/>}
         />
-        <Route exact path='/results' render={() =>  <Results redirect={this.state.redirect} handleRedirect={this.handleRedirect}/>}
+        <Route exact path='/results' render={() =>  <Results 
+        answeredA={this.state.answeredA}
+        missedA={this.state.missedA}/>}
         />
       </Switch>
     </div>

@@ -5,7 +5,7 @@ class GTimer extends React.Component{
   constructor(props) {
       super(props);
       this.state= {
-        count: 100,
+        count: 30,
         redirect: false,
       }
       this.handleRedirect = this.handleRedirect.bind(this);
