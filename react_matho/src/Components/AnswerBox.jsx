@@ -24,7 +24,7 @@ class AnswerBox extends React.Component{
         event.preventDefault();
         let count = this.state.count
         if(this.state.value === this.props.answer) {
-            this.state.answered.push(this.props.Qid)
+            this.props.answeredA.push(this.props.Qid)
             console.log(this.state.answered)
             this.props.question()
             this.state.value = ''
@@ -32,10 +32,6 @@ class AnswerBox extends React.Component{
             alert('🥳🎉🎈 '+'Correct'+ ' 🎊😄🎈')
         } else {
             alert('❌'+' Incorrect: ' +'❌'+ this.props.problem + '=' + this.props.answer);
-           
-            // this.setState((state) => {
-            //     return {count: 10};
-            //   });
         }
         
         

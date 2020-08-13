@@ -1,11 +1,25 @@
 import React from 'react'
+import {Redirect, Link} from 'react-router-dom'
 
-
-class GTimer extends React.PureComponent{
+class GTimer extends React.Component{
   constructor(props) {
       super(props);
       this.state= {
-        count: 60
+        count: 100,
+        redirect: false,
+      }
+      this.handleRedirect = this.handleRedirect.bind(this);
+    }
+    handleRedirect = () => {
+      this.setState({
+        redirect: !this.state.redirect
+      })
+    }
+    componentDidUpdate() {
+      if (this.state.redirect) {
+        this.setState({
+          redirect: false
+        })
       }
     }
     componentDidMount(){
@@ -21,11 +35,15 @@ class GTimer extends React.PureComponent{
     }
     render() {
     let count= this.state.count
-    if(count === 0) {
-      console.log('GAME OVER')
-      
-  }
-      return (
+    if(count === 0) {      
+      this.handleRedirect()
+    }
+    const { redirect } = this.state;
+    if (redirect) {
+       return <Redirect to='/results'/>;
+     }
+
+    return (
         <div><h2>Game overall {count}</h2></div>
       );
     }

@@ -1,69 +1,47 @@
 import React, { Component} from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import Launch from './Components/Launch'
+import Results from './Components/Results';
 import QTimer from './Components/QTimer';
-import GTimer from './Components/GTimer'
-import TestQ from './Questions'
 const baseURL = "http://localhost:3003";
 
 
 class App extends React.Component {
   state = {
-    answer: false,
-    unanswered:[],
-    reviewQ: [],
-    correct: [],
-    score: 0,
-    userid:"",
-    baseURL: baseURL,
-    question: [],
-    TestQ: TestQ,
-    
-    
+    redirect: false,
+    answeredA: [],
+    missedA: [],
   }
-  componentDidMount() {
-    this.getQuestion()
+  handleRedirect = () => {
+    this.setState({
+      redirect: !this.state.redirect
+    })
+  }
+  componentDidUpdate() {
+    if (this.state.redirect) {
+      this.setState({
+        redirect: false
+      })
+    }
   }
   play() {
-    
-    let answers= this.state.question.map(({question, answer}) => {
-      
-    })
-    
-  }
-  getQuestion = () => {
-    TestQ().then(question => {
-      this.setState({
-        TestQ: TestQ,
-        problem: question[0].question,
-        answer: question[0].answer,
-        Qid: question[0].Qid
-
-      })
-    })
-  }
   
-
-
-  render() {
-   
-  return (
-    <div className="App">
-      <h1>First steps</h1>
-      
-      {'QID '+ this.state.Qid}<br/>
-      {this.state.problem}<br/>
-      <QTimer
-      problem={this.state.problem}
-      answer={this.state.answer}
-      Qid={this.state.Qid}
-      question={this.getQuestion}/>
-
-      {this.state.answer}
-      
-      
-      
     
-      
+  }
+  render() {
+  
+  return (
+   
+    <div className="App">
+      <Switch>
+        <Route exact path='/' component={Launch}/>
+        <Route exact path='/game' render={() => <QTimer
+        missedA={this.state.missedA} answeredA={this.state.answeredA}/>}
+        />
+        <Route exact path='/results' render={() =>  <Results redirect={this.state.redirect} handleRedirect={this.handleRedirect}/>}
+        />
+      </Switch>
     </div>
   );
 }
