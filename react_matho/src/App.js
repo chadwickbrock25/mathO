@@ -1,43 +1,47 @@
 import React, { Component} from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import Launch from './Components/Launch'
+import Results from './Components/Results';
 import QTimer from './Components/QTimer';
-import GTimer from './Components/GTimer'
 const baseURL = "http://localhost:3003";
 
 
-class App extends React.PureComponent {
+class App extends React.Component {
   state = {
-    question: '',
-    answer: false,
-    unanswered:[],
-    reviewQ: [],
-    correct: [],
-    score: 0,
-    signUp:false,
-    login:false,
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    loginEmail: "",
-    loginPassword: "",
-    token:"",
-    userid:"",
-    baseURL: baseURL,
-    
-    
+    redirect: false,
+    answeredA: [],
+    missedA: [],
+  }
+  handleRedirect = () => {
+    this.setState({
+      redirect: !this.state.redirect
+    })
+  }
+  componentDidUpdate() {
+    if (this.state.redirect) {
+      this.setState({
+        redirect: false
+      })
+    }
   }
   play() {
-
-  }
- 
-  render() {
+  
     
+  }
+  render() {
+  
   return (
+   
     <div className="App">
-      <h1>First steps </h1>
-      <QTimer/>
-      <GTimer/>
+      <Switch>
+        <Route exact path='/' component={Launch}/>
+        <Route exact path='/game' render={() => <QTimer
+        missedA={this.state.missedA} answeredA={this.state.answeredA}/>}
+        />
+        <Route exact path='/results' render={() =>  <Results redirect={this.state.redirect} handleRedirect={this.handleRedirect}/>}
+        />
+      </Switch>
     </div>
   );
 }

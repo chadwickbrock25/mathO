@@ -20,7 +20,15 @@ app.use(express.json());
 
 
 app.get('/', (req, res) =>  {
-    res.send('Second step')
+    res.send('launch')
+});
+
+app.get('/game', (req, res) =>  {
+    res.send('game')
+});
+
+app.get('/results', (req, res) =>  {
+    res.send('results')
 });
 
 // const mathOController = require('./controllers/con_matho')
