@@ -1,13 +1,14 @@
 import React from 'react'
+import AnswerBox from './AnswerBox'
 
-
-class QTimer extends React.PureComponent{
+class QTimer extends React.Component{
   constructor(props) {
       super(props);
       this.state= {
-        count: 2,
+        count: 10,
         missed: []
       }
+      this.resetTime = this.resetTime.bind(this);
     }
     componentDidMount(){
       this.myInterval = setInterval(()=> {
@@ -21,6 +22,9 @@ class QTimer extends React.PureComponent{
       }, 1000)
       
   }
+  resetTime() {
+    this.setState({count: 10}) 
+}
     render() {
     let count= this.state.count
     if(count === 0) {
@@ -30,7 +34,16 @@ class QTimer extends React.PureComponent{
       this.props.question()
   }
       return (
-        <div><h2>Timer Layer{count}</h2></div>
+        <div>
+          <h2>Timer Layer{count}</h2>
+          <AnswerBox
+          problem={this.props.problem}
+          answer={this.props.answer}
+          Qid={this.props.Qid}
+          question={this.props.question}
+          resetTime={this.resetTime}
+          />
+          </div>
       );
     }
   }

@@ -3,11 +3,10 @@ import './App.css';
 import QTimer from './Components/QTimer';
 import GTimer from './Components/GTimer'
 import TestQ from './Questions'
-import AnswerBox from './Components/AnswerBox'
 const baseURL = "http://localhost:3003";
 
 
-class App extends React.PureComponent {
+class App extends React.Component {
   state = {
     answer: false,
     unanswered:[],
@@ -52,10 +51,8 @@ class App extends React.PureComponent {
       <h1>First steps</h1>
       
       {'QID '+ this.state.Qid}<br/>
-      <GTimer/>
       {this.state.problem}<br/>
-      
-      <AnswerBox
+      <QTimer
       problem={this.state.problem}
       answer={this.state.answer}
       Qid={this.state.Qid}
