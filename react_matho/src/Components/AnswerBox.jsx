@@ -65,7 +65,7 @@ class AnswerBox extends React.Component{
                 </form>
                 
             </div>
-            <GTimer/>
+            <div className='overallT'><GTimer/></div>
         </div>
     )}
 }

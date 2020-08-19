@@ -1,6 +1,7 @@
 import React from 'react'
 import AnswerBox from './AnswerBox'
 import TestQ from '../Questions'
+import '../App.css';
 
 class QTimer extends React.Component{
   constructor(props) {
@@ -46,24 +47,21 @@ class QTimer extends React.Component{
       this.getQuestion()
     }
     return (
-        <div>
-          <h1>Game</h1>
-          {'QID '+ this.state.Qid}<br/>
-          {this.state.problem}<br/>
-
-          <h2>Timer Layer{count}</h2>
+        <div className='game'>
+          <h1 className='problem'>{this.state.problem}</h1>
+          <h3>Timer Layer{count}</h3>
           
-          <AnswerBox
-          missedA={this.props.missedA}
-          answeredA={this.props.answeredA}
-          problem={this.state.problem}
-          answer={this.state.answer}
-          Qid={this.state.Qid}
-          question={this.getQuestion}
-          resetTime={this.resetTime}
-          />
-
-          {this.state.answer}
+          <div className='ab'>
+            <AnswerBox
+            missedA={this.props.missedA}
+            answeredA={this.props.answeredA}
+            problem={this.state.problem}
+            answer={this.state.answer}
+            Qid={this.state.Qid}
+            question={this.getQuestion}
+            resetTime={this.resetTime}
+            />
+          </div>
         </div>
     );
   }

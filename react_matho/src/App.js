@@ -10,8 +10,8 @@ import QTimer from './Components/QTimer';
 class App extends React.Component {
   state = {
     redirect: false,
-    answeredA: ["1 + 7", "1 + 6", "1 + 2", "1 + 2", "1 + 6"],
-    missedA: ["1 + 2", "1 + 6", "1 + 2"],
+    answeredA: [],
+    missedA: ['1 + 4', '1 + 1'],
   }
   handleRedirect = () => {
     this.setState({

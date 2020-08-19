@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css';
 const baseURL = "http://localhost:3003/results";
 class Results extends React.Component {
  constructor(props) {
@@ -37,14 +38,12 @@ class Results extends React.Component {
     const Aindex = resultsA.length
     const ratio = (Aindex) + '/' + (Mindex + Aindex)
    return (
-     <div className='container'>
-      <h1>Results</h1>
-      <p>Questions Missed</p>
-      {resultsM}
-      <p>Answered Correctly</p>
-      {ratio}
-      
-        
+     <div className='results'>
+       <div className='r-contain'>
+        <h1 className='r-header'>Results:</h1>
+        <h2>Questions Missed {resultsM}</h2>
+        <h4>Answered Correctly {ratio}</h4>
+      </div>
      </div>
    )
  }

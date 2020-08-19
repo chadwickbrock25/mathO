@@ -21,7 +21,6 @@ class Launch extends React.Component {
   render () {
    return (
      <div className='container'>
-      <h1>Launch</h1>
       <a href='/game'><button>Play</button></a>
      </div>
    )
